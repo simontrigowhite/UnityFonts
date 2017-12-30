@@ -15,8 +15,6 @@ public class attempt1 : MonoBehaviour {
         Debug.Log("hello");
         pointless();
         Import();
-
-        //BitmapFontImporter.GenerateFont();
 	}
 
     void pointless()
