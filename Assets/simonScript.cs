@@ -14,18 +14,7 @@ public class simonScript : MonoBehaviour {
         Debug.Log("the text object is called " + textObject.name);
         Debug.Log("its font is " + textObject.font.name);
 
-        //Font arialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        //textObject.font = arialFont;
-
-        //Debug.Log("its font is " + textObject.font.name);
-
         GenerateComicyFont();
-
-        Font comicyFont = Resources.Load<Font>("comicy2");
-        textObject.font = comicyFont;
-
-        Debug.Log("its font is " + textObject.font.name);
-
 	}
 	
     void GenerateComicyFont()
@@ -34,7 +23,6 @@ public class simonScript : MonoBehaviour {
         // if they already exist, it will overwrite them.
 
         TextAsset comicyFontXml = Resources.Load<TextAsset>("comicy2");
-
         BitmapFontImporter.GenerateFontFromAsset(comicyFontXml);
     }
 
@@ -45,8 +33,25 @@ public class simonScript : MonoBehaviour {
     {
         if ((Input.GetMouseButtonDown(0)))
         {
-            Debug.Log("clicked " + i);
+            Debug.Log("clicked - " + i);
             i++;
+
+            // flip it between arial and comicy2
+
+            UnityEngine.UI.Text textObject = this.GetComponent<UnityEngine.UI.Text>();
+            if (textObject.font.name == "Arial")
+            {
+                Font comicyFont = Resources.Load<Font>("comicy2");
+                textObject.font = comicyFont;
+            }
+            else
+            {
+                Font arialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
+                textObject.font = arialFont;
+
+            }
+
+            Debug.Log("its font is " + textObject.font.name + " - " + i);
         }
     }
 }
