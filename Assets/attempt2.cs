@@ -6,7 +6,7 @@ public class attempt2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("hello"); 
+		//Debug.Log("hello"); 
 	}
 	
 	// Update is called once per frame

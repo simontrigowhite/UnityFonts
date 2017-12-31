@@ -12,8 +12,20 @@ public class simonScript : MonoBehaviour {
 
         UnityEngine.UI.Text textObject = this.GetComponent<UnityEngine.UI.Text>();
         Debug.Log("the text object is called " + textObject.name);
+        Debug.Log("its font is " + textObject.font.name);
+
+        Font arialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        textObject.font = arialFont;
+
+        Debug.Log("its font is " + textObject.font.name);
 
         GenerateComicyFont();
+
+        Font comicyFont = Resources.Load<Font>("comicy2");
+        textObject.font = comicyFont;
+
+        Debug.Log("its font is " + textObject.font.name);
+
 	}
 	
     void GenerateComicyFont()
