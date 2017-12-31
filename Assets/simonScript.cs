@@ -14,10 +14,10 @@ public class simonScript : MonoBehaviour {
         Debug.Log("the text object is called " + textObject.name);
         Debug.Log("its font is " + textObject.font.name);
 
-        Font arialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        textObject.font = arialFont;
+        //Font arialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        //textObject.font = arialFont;
 
-        Debug.Log("its font is " + textObject.font.name);
+        //Debug.Log("its font is " + textObject.font.name);
 
         GenerateComicyFont();
 
@@ -30,7 +30,8 @@ public class simonScript : MonoBehaviour {
 	
     void GenerateComicyFont()
     {
-        // to see this working, first delete the comicy2.mat and comicy2.fontsettings files from the Resources folder in Assets
+        // to see this working, first delete the comicy2.mat and comicy2.fontsettings files from the Resources folder in Assets.
+        // if they already exist, it will overwrite them.
 
         TextAsset comicyFontXml = Resources.Load<TextAsset>("comicy2");
 
