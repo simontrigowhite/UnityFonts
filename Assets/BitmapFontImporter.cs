@@ -1,31 +1,32 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
-using System.Collections;
-using System;
 using UnityEditor;
 using System.IO;
 using System.Xml;
 
 public static class BitmapFontImporter
 {
-	
 	[MenuItem("Assets/Generate Bitmap Font")]
-	public static void GenerateFont ()
+	public static void GenerateFont()
 	{
 		TextAsset selected = (TextAsset)Selection.activeObject;
-		string rootPath = Path.GetDirectoryName (AssetDatabase.GetAssetPath (selected));
-		
-		Texture2D texture = AssetDatabase.LoadAssetAtPath (rootPath + "/" + selected.name + ".png", typeof(Texture2D)) as Texture2D;
-		if (!texture)
-			throw new UnityException ("Texture2d asset doesn't exist for " + selected.name);
-		
-		string exportPath = rootPath + "/" + Path.GetFileNameWithoutExtension (selected.name);
-		
-		Work (selected, exportPath, texture);
+        GenerateFontFromAsset(selected);
 	}
 	
+    public static void GenerateFontFromAsset(TextAsset textAsset)
+    {
+        string rootPath = Path.GetDirectoryName(AssetDatabase.GetAssetPath(textAsset));
+
+        Texture2D texture = AssetDatabase.LoadAssetAtPath(rootPath + "/" + textAsset.name + ".png", typeof(Texture2D)) as Texture2D;
+        if (!texture)
+            throw new UnityException("Texture2d asset doesn't exist for " + textAsset.name);
+
+        string exportPath = rootPath + "/" + Path.GetFileNameWithoutExtension(textAsset.name);
+
+        Work(textAsset, exportPath, texture);
+    }
 	
-	public static void Work (TextAsset import, string exportPath, Texture2D texture)
+	private static void Work (TextAsset import, string exportPath, Texture2D texture)
 	{
 		if (!import)
 			throw new UnityException (import.name + "is not a valid font-xml file");
