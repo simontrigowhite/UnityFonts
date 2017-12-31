@@ -38,8 +38,15 @@ public class simonScript : MonoBehaviour {
         BitmapFontImporter.GenerateFontFromAsset(comicyFontXml);
     }
 
+    private int i = 0;
+
     // Update is called once per frame
     void Update()
     {
+        if ((Input.GetMouseButtonDown(0)))
+        {
+            Debug.Log("clicked " + i);
+            i++;
+        }
     }
 }
