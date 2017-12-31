@@ -25,7 +25,7 @@ public static class BitmapFontImporter
 	}
 	
 	
-	private static void Work (TextAsset import, string exportPath, Texture2D texture)
+	public static void Work (TextAsset import, string exportPath, Texture2D texture)
 	{
 		if (!import)
 			throw new UnityException (import.name + "is not a valid font-xml file");
