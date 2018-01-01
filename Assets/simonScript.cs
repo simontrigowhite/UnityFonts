@@ -22,7 +22,7 @@ public class simonScript : MonoBehaviour {
         // to see this working, first delete the comicy2.mat and comicy2.fontsettings files from the Resources folder in Assets.
         // if they already exist, it will overwrite them.
 
-        TextAsset comicyFontXml = Resources.Load<TextAsset>("comicy2");
+        TextAsset comicyFontXml = Resources.Load<TextAsset>("font2018");
         BitmapFontImporter.GenerateFontFromAsset(comicyFontXml);
     }
 
@@ -34,14 +34,13 @@ public class simonScript : MonoBehaviour {
         if ((Input.GetMouseButtonDown(0)))
         {
             Debug.Log("clicked - " + i);
-            i++;
 
             // flip it between arial and comicy2
 
             UnityEngine.UI.Text textObject = this.GetComponent<UnityEngine.UI.Text>();
             if (textObject.font.name == "Arial")
             {
-                Font comicyFont = Resources.Load<Font>("comicy2");
+                Font comicyFont = Resources.Load<Font>("font2018");
                 textObject.font = comicyFont;
             }
             else
@@ -52,6 +51,11 @@ public class simonScript : MonoBehaviour {
             }
 
             Debug.Log("its font is " + textObject.font.name + " - " + i);
+
+
+            textObject.text = "now I am different zz 0123-???" + i;
+
+            i++;
         }
     }
 }
